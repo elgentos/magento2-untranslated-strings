@@ -1,4 +1,4 @@
-# Elgentos_UntranslatedStrings
+# elgentos/magento2-untranslated-strings
 
 Magento 2 module that detects **untranslated strings at runtime**, reports them
 in an admin grid and can **translate them automatically with Claude**
@@ -29,7 +29,7 @@ A spiritual successor to the Magento 1 extension
 ## Installation
 
 ```bash
-composer require elgentos/module-untranslated-strings
+composer require elgentos/magento2-untranslated-strings
 bin/magento module:enable Elgentos_UntranslatedStrings
 bin/magento setup:upgrade
 ```
