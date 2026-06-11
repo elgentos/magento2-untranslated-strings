@@ -1,0 +1,24 @@
+{
+    "elgentos_untranslated_strings": {
+        "column": {
+            "entity_id": true,
+            "string_hash": true,
+            "string": true,
+            "locale": true,
+            "store_id": true,
+            "url": true,
+            "count": true,
+            "status": true,
+            "error": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "ELGENTOS_UNTRANSLATED_STRINGS_LOCALE_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "ELGENTOS_UNTRANSLATED_STRINGS_STRING_HASH": true
+        }
+    }
+}

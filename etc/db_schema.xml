@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="elgentos_untranslated_strings" resource="default" engine="innodb"
+           comment="Untranslated strings detected at runtime">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="varchar" name="string_hash" length="40" nullable="false"
+                comment="SHA1 of locale|store|string"/>
+        <column xsi:type="text" name="string" nullable="false" comment="Untranslated string"/>
+        <column xsi:type="varchar" name="locale" length="16" nullable="false" comment="Locale code"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" default="0"
+                comment="Store ID"/>
+        <column xsi:type="varchar" name="url" length="255" nullable="true"
+                comment="URL where the string was first seen"/>
+        <column xsi:type="int" name="count" unsigned="true" nullable="false" default="1"
+                comment="Number of times the string was seen"/>
+        <column xsi:type="varchar" name="status" length="16" nullable="false" default="new"
+                comment="Status (new, queued, error)"/>
+        <column xsi:type="text" name="error" nullable="true" comment="Last translation error"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false"
+                default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false"
+                default="CURRENT_TIMESTAMP" comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="ELGENTOS_UNTRANSLATED_STRINGS_STRING_HASH">
+            <column name="string_hash"/>
+        </constraint>
+        <index referenceId="ELGENTOS_UNTRANSLATED_STRINGS_LOCALE_STORE_ID" indexType="btree">
+            <column name="locale"/>
+            <column name="store_id"/>
+        </index>
+    </table>
+</schema>

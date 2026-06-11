@@ -1,0 +1,32 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Elgentos\UntranslatedStrings\Controller\Adminhtml\Strings;
+
+use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\View\Result\Page;
+use Magento\Framework\View\Result\PageFactory;
+
+class Index extends Action implements HttpGetActionInterface
+{
+    public const ADMIN_RESOURCE = 'Elgentos_UntranslatedStrings::untranslated_strings';
+
+    public function __construct(
+        Context $context,
+        private readonly PageFactory $resultPageFactory
+    ) {
+        parent::__construct($context);
+    }
+
+    public function execute(): Page
+    {
+        $resultPage = $this->resultPageFactory->create();
+        $resultPage->setActiveMenu('Elgentos_UntranslatedStrings::untranslated_strings');
+        $resultPage->getConfig()->getTitle()->prepend(__('Untranslated Strings'));
+
+        return $resultPage;
+    }
+}

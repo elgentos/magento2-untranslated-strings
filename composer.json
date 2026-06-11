@@ -1,0 +1,30 @@
+{
+    "name": "elgentos/module-untranslated-strings",
+    "description": "Detects untranslated strings at runtime, reports them in an admin grid and translates them with Claude (Anthropic API) through the message queue.",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "elgentos",
+            "email": "info@elgentos.nl"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "anthropic-ai/sdk": "^0.7",
+        "magento/framework": ">=103.0",
+        "magento/module-backend": "*",
+        "magento/module-config": "*",
+        "magento/module-store": "*",
+        "magento/module-translation": "*",
+        "magento/module-ui": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Elgentos\\UntranslatedStrings\\": ""
+        }
+    }
+}

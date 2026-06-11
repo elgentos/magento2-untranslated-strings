@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Elgentos_UntranslatedStrings::untranslated_strings"
+             title="Untranslated Strings"
+             translate="title"
+             module="Elgentos_UntranslatedStrings"
+             sortOrder="100"
+             parent="Magento_Reports::report"
+             action="elgentos_untranslatedstrings/strings/index"
+             resource="Elgentos_UntranslatedStrings::untranslated_strings"/>
+    </menu>
+</config>

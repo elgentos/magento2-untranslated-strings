@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="untranslated_strings" translate="label" type="text" sortOrder="500"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Untranslated Strings</label>
+            <tab>advanced</tab>
+            <resource>Elgentos_UntranslatedStrings::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Log Untranslated Strings</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Detect strings that are rendered without a translation and log them to
+                        Reports → Untranslated Strings. Adds a small rendering overhead — enable it
+                        per store view, preferably on development or staging environments.</comment>
+                </field>
+                <field id="api_key" translate="label comment" type="obscure" sortOrder="20"
+                       showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Anthropic API Key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <comment>Used by the "Translate with Claude" action in the report grid.
+                        Create an API key at console.anthropic.com.</comment>
+                </field>
+                <field id="model" translate="label comment" type="text" sortOrder="30"
+                       showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Claude Model</label>
+                    <comment>The Claude model used for translating, e.g. claude-opus-4-8 (default)
+                        or claude-sonnet-4-6.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

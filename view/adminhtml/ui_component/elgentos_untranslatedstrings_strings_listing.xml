@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">elgentos_untranslatedstrings_strings_listing.elgentos_untranslatedstrings_strings_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>elgentos_untranslatedstrings_strings_columns</spinner>
+        <deps>
+            <dep>elgentos_untranslatedstrings_strings_listing.elgentos_untranslatedstrings_strings_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="elgentos_untranslatedstrings_strings_listing_data_source"
+                component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Elgentos_UntranslatedStrings::untranslated_strings</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider"
+                      name="elgentos_untranslatedstrings_strings_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction">
+            <action name="translate">
+                <settings>
+                    <confirm>
+                        <message translate="true">Queue the selected strings for translation with Claude? Translations are written to the store-scoped database translations once the queue consumer has processed them.</message>
+                        <title translate="true">Translate with Claude</title>
+                    </confirm>
+                    <url path="elgentos_untranslatedstrings/strings/massTranslate"/>
+                    <type>translate</type>
+                    <label translate="true">Translate with Claude</label>
+                </settings>
+            </action>
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Delete the selected untranslated strings from the report?</message>
+                        <title translate="true">Delete</title>
+                    </confirm>
+                    <url path="elgentos_untranslatedstrings/strings/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+        <exportButton name="export_button"/>
+    </listingToolbar>
+    <columns name="elgentos_untranslatedstrings_strings_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="entity_id" sortOrder="10">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="string" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">String</label>
+            </settings>
+        </column>
+        <column name="locale" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Locale</label>
+            </settings>
+        </column>
+        <column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store" sortOrder="40">
+            <settings>
+                <filter>select</filter>
+                <options class="Magento\Store\Ui\Component\Listing\Column\Store\Options"/>
+                <dataType>select</dataType>
+                <label translate="true">Store View</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+        <column name="url" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">First Seen At</label>
+            </settings>
+        </column>
+        <column name="count" sortOrder="60">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Occurrences</label>
+            </settings>
+        </column>
+        <column name="status" component="Magento_Ui/js/grid/columns/select" sortOrder="70">
+            <settings>
+                <filter>select</filter>
+                <options class="Elgentos\UntranslatedStrings\Model\Source\Status"/>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+        <column name="error" sortOrder="80">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Error</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="updated_at" class="Magento\Ui\Component\Listing\Columns\Date"
+                component="Magento_Ui/js/grid/columns/date" sortOrder="90">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Last Seen</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

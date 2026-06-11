@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/consumer.xsd">
+    <consumer name="elgentosUntranslatedStringsTranslate"
+              queue="elgentos.untranslatedstrings.translate"
+              connection="db"
+              handler="Elgentos\UntranslatedStrings\Model\Queue\TranslateConsumer::process"
+              maxMessages="1000"/>
+</config>

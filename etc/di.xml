@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Phrase\Renderer\Translate">
+        <plugin name="elgentos_untranslatedstrings_detect"
+                type="Elgentos\UntranslatedStrings\Plugin\DetectUntranslatedString"/>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="elgentos_untranslatedstrings_strings_listing_data_source"
+                      xsi:type="string">Elgentos\UntranslatedStrings\Ui\DataProvider\GridCollection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Elgentos\UntranslatedStrings\Ui\DataProvider\GridCollection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">elgentos_untranslated_strings</argument>
+            <argument name="resourceModel"
+                      xsi:type="string">Elgentos\UntranslatedStrings\Model\ResourceModel\UntranslatedString</argument>
+        </arguments>
+    </virtualType>
+</config>
