@@ -1,5 +1,5 @@
 {
-    "name": "elgentos/module-untranslated-strings",
+    "name": "elgentos/magento2-untranslated-strings",
     "description": "Detects untranslated strings at runtime, reports them in an admin grid and translates them with Claude (Anthropic API) through the message queue.",
     "type": "magento2-module",
     "license": "MIT",
